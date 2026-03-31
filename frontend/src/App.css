@@ -1,0 +1,266 @@
+:root {
+	--bg: #0b0c0f;
+	--bg2: #0f1117;
+	--surface: rgba(255, 255, 255, 0.06);
+	--surface2: rgba(255, 255, 255, 0.09);
+	--border: rgba(255, 255, 255, 0.12);
+	--text: rgba(255, 255, 255, 0.92);
+	--muted: rgba(255, 255, 255, 0.62);
+	--muted2: rgba(255, 255, 255, 0.44);
+	--accent: #39d98a;
+	--shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+	--radius: 18px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+	color-scheme: dark;
+}
+
+::selection {
+	background: rgba(57, 217, 138, 0.28);
+}
+
+.AppShell {
+	min-height: 100vh;
+	background:
+		radial-gradient(1200px 600px at 20% -10%, rgba(57, 217, 138, 0.18), transparent 55%),
+		radial-gradient(900px 500px at 110% 20%, rgba(255, 255, 255, 0.08), transparent 60%),
+		linear-gradient(180deg, var(--bg), var(--bg2));
+	color: var(--text);
+}
+
+.TopBar {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(11, 12, 15, 0.72);
+	backdrop-filter: blur(10px);
+}
+
+.TopBar-inner {
+	max-width: 980px;
+	margin: 0 auto;
+	padding: 16px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+}
+
+.Brand { display: flex; align-items: center; gap: 12px; }
+
+.Brand-mark {
+	width: 10px;
+	height: 10px;
+	border-radius: 999px;
+	background: var(--accent);
+	box-shadow: 0 0 0 6px rgba(57, 217, 138, 0.14);
+}
+
+.Brand-text { line-height: 1.1; text-align: left; }
+.Brand-title { letter-spacing: 0.08em; font-weight: 700; font-size: 13px; opacity: 0.92; }
+.Brand-subtitle { font-size: 12px; color: var(--muted); }
+
+.TopBar-meta {
+	font-size: 12px;
+	color: var(--muted2);
+	letter-spacing: 0.02em;
+	white-space: nowrap;
+}
+
+.Page {
+	max-width: 980px;
+	margin: 0 auto;
+	padding: 34px 20px 42px;
+}
+
+.Hero { padding: 8px 0 22px; text-align: left; }
+
+.Hero-title {
+	margin: 0;
+	font-size: 36px;
+	font-weight: 650;
+	letter-spacing: -0.02em;
+}
+
+.Hero-subtitle {
+	margin: 10px 0 0;
+	max-width: 62ch;
+	color: var(--muted);
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+.Card {
+	border: 1px solid var(--border);
+	background: linear-gradient(180deg, var(--surface), rgba(255, 255, 255, 0.03));
+	box-shadow: var(--shadow);
+	border-radius: var(--radius);
+	padding: 22px;
+}
+
+.Form { display: flex; flex-direction: column; gap: 18px; }
+
+.FieldGrid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 14px;
+}
+
+@media (max-width: 720px) {
+	.Hero-title { font-size: 30px; }
+	.FieldGrid { grid-template-columns: 1fr; }
+}
+
+.Field { text-align: left; display: flex; flex-direction: column; gap: 8px; }
+.Field-label { font-size: 12px; color: var(--muted2); letter-spacing: 0.04em; text-transform: uppercase; }
+.Field-span2 { grid-column: span 2; }
+
+@media (max-width: 720px) {
+	.Field-span2 { grid-column: span 1; }
+}
+
+.Field input,
+.Field select {
+	width: 100%;
+	appearance: none;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	background: rgba(15, 17, 23, 0.55);
+	color: var(--text);
+	border-radius: 14px;
+	padding: 12px 12px;
+	font-size: 14px;
+	outline: none;
+	transition: border-color 140ms ease, background 140ms ease, transform 140ms ease;
+}
+
+.Field input::placeholder { color: rgba(255, 255, 255, 0.35); }
+
+.Field select {
+	padding-right: 34px;
+	cursor: pointer;
+}
+
+.Field select option {
+	background: var(--bg2);
+	color: var(--text);
+}
+
+.Field input:focus,
+.Field select:focus {
+	border-color: rgba(57, 217, 138, 0.58);
+	background: rgba(15, 17, 23, 0.72);
+}
+
+.FormActions {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 14px;
+}
+
+@media (max-width: 720px) {
+	.FormActions { flex-direction: column; align-items: stretch; }
+}
+
+.PrimaryButton {
+	border: 1px solid rgba(57, 217, 138, 0.28);
+	background: linear-gradient(180deg, rgba(57, 217, 138, 0.22), rgba(57, 217, 138, 0.10));
+	color: var(--text);
+	border-radius: 14px;
+	padding: 12px 16px;
+	cursor: pointer;
+	min-width: 220px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+}
+
+.PrimaryButton-label {
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	font-weight: 650;
+	font-size: 12px;
+}
+
+.PrimaryButton:hover { transform: translateY(-1px); border-color: rgba(57, 217, 138, 0.46); }
+.PrimaryButton:active { transform: translateY(0px); }
+
+.PrimaryButton:disabled {
+	opacity: 0.55;
+	cursor: not-allowed;
+	transform: none;
+}
+
+.FormHint { font-size: 12px; color: var(--muted2); text-align: right; }
+
+@media (max-width: 720px) {
+	.FormHint { text-align: left; }
+}
+
+.Results { margin-top: 16px; }
+
+.ResultsHeader {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 16px;
+	padding-bottom: 14px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ResultsTitle { margin: 0; font-size: 18px; font-weight: 650; letter-spacing: -0.01em; }
+.ResultsSub { margin-top: 6px; color: var(--muted); font-size: 13px; }
+
+.ResultsBadge {
+	font-size: 11px;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.7);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	background: rgba(255, 255, 255, 0.06);
+	padding: 8px 10px;
+	border-radius: 999px;
+}
+
+.StatsGrid {
+	margin-top: 14px;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 12px;
+}
+
+@media (max-width: 840px) {
+	.StatsGrid { grid-template-columns: 1fr; }
+}
+
+.Stat {
+	border: 1px solid rgba(255, 255, 255, 0.10);
+	background: rgba(255, 255, 255, 0.04);
+	border-radius: 16px;
+	padding: 14px 14px;
+	text-align: left;
+}
+
+.StatLabel { font-size: 12px; color: var(--muted2); letter-spacing: 0.04em; text-transform: uppercase; }
+.StatValue { margin-top: 10px; font-size: 18px; font-weight: 650; letter-spacing: -0.02em; }
+.StatSuffix { font-size: 12px; font-weight: 500; color: var(--muted); margin-left: 6px; }
+
+.Footer {
+	margin-top: 18px;
+	padding: 18px 2px 0;
+}
+
+.Footer-inner {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	color: var(--muted2);
+	font-size: 12px;
+}
+
+.Footer-dot { opacity: 0.6; }
